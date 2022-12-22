@@ -12,16 +12,15 @@ class Render:
 		text_surface = self.font.render(text, False, 'white')
 		self.window.blit(text_surface,(position))
 	
-	def lines(self,points):
-		for x in range(len(points.fetch_points())-1):
-			pygame.draw.line(self.line_surface,'white',points.fetch_points()[x],points.fetch_points()[x+1],5)
+	def line(self,points,width,color):
+		for x in range(len(points.fetch())-1):
+			pygame.draw.line(self.line_surface,color,points.fetch()[x],points.fetch()[x+1],width)
 		self.window.blit(self.line_surface,(0,0))
 		
-	def dots(self,points):
-		for x in range(len(points.fetch_points())):
-			pygame.draw.circle(self.line_surface,'white',points.fetch_points()[x],2)
+	def dots(self,points,width,color):
+		for x in range(len(points.fetch())):
+			pygame.draw.circle(self.line_surface,color,points.fetch()[x],width)
 		self.window.blit(self.line_surface,(0,0))
-		
 		
 	def update(self):
 		pygame.display.update()
